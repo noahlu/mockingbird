@@ -1,0 +1,10 @@
+.DS_Strore
+.build
+.project
+.settings/
+.htdocs/about.htm
+.htdocs/css/
+.htdocs/index.htm
+.htdocs/it-news/
+.htdocs/javascript-note/
+.htdocs/test/
