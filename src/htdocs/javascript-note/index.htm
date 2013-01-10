@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>JAVASCRIPT笔记 - 前端网事</title>
+<link rel="stylesheet" charset="utf-8" href="/assets/lib/google-code-prettify/prettify.css" />
+<link rel="stylesheet" charset="utf-8" href="/assets/lib/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" charset="utf-8" href="/assets/css/global.css" />
+<script charset="utf-8" src="/assets/lib/seajs/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+    alias : {
+        'jquery': '/assets/lib/jquery/1.8.1/jquery.min.js',       
+        'bootstrap': '/assets/lib/bootstrap/js/bootstrap.min.js',       
+        'prettify': '/assets/lib/google-code-prettify/prettify.js',       
+    },
+    preload: 'jquery',
+    //debug: true,
+    charset: 'utf-8'
+});
+seajs.modify('jquery', function(require, exports) {
+  window.jQuery = window.$ = exports
+});
+seajs.modify('bootstrap', function(require, exports, module) {
+  module.exports = $.bootstrap;
+});
+seajs.modify('prettify', function(require, exports, module) {
+  module.exports = $.prettify;
+});
+</script>
+</head>
+<body class="main">
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">前端网事</a>
+            <div class="pull-left navbar-text" >春天把代码种下去，秋天收获好多好多用户</div>
+                        <div class="nav-collapse collapse pull-right">
+                <ul class="nav">
+                    <li><a href="http://www.noahlu.com/about.htm">About</a></li>
+                    <li><a href="http://www.noahlu.com/portfolio.htm">Portfolio</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    <!--/.contsiner -->
+    </div>
+</div>
+<!--/.navbar -->
+
+<div class="main-content clearfix">
+
+
+<div class="content-post span9">
+        <div class="page-header">
+        <h1>JAVASCRIPT笔记</h1>
+    </div>
+    
+        <div class="page-post-info" >
+        <h2><a href="/javascript-note/javascript-star-rating.htm">星型评分的Javascript代码</a></h2>
+        <p class="muted"><em>2012-09-30 11:10:42</em></p>
+        <div class="page-post-excerpt"><a href="http://www.noahlu.com/blog/wp-content/uploads/2011/07/star-rating.bmp"><img src="http://www.noahlu.com/blog/wp-content/uploads/2011/07/star-rating.bmp" alt="Javascript评分代码" title="Javascript评分代码" class="alignright size-full wp-image-594" /></a>周末没事，写了几段代码，先分享这个小小的评分工具，实际上它在豆瓣和新浪上都很常见，用户体验也不错。先报两个缺点：1）这个小工具暂时没加与服务器后端的交互，只有纯粹的前端效果；2）没考虑名字空间。然后优点是：1）兼容性良好，至少我测过的firefox，chrome，IE6-8没问题</div>
+        <a href="/javascript-note/javascript-star-rating.htm" class="btn btn-warning">查看全文 >></a>
+    </div>
+
+        <div class="page-post-info" >
+        <h2><a href="/javascript-note/script-to-collect-google-top10-page-info.htm">写了一个统计Google搜索前十名页面信息的脚本</a></h2>
+        <p class="muted"><em>2012-09-30 11:04:19</em></p>
+        <div class="page-post-excerpt">有时候你可能想知道某些关键词在google搜索结果中前10名的页面PR和Alexa信息，如果不考虑时间，你完全可以把top10的页面挨个点击，然后去看他们各自页面的PR和Alexa排名，假如...你想分析的关键词有数十个，你这样做会把自己弄崩溃的。今天就写了个脚本来帮忙抓取这些信息：</div>
+        <a href="/javascript-note/script-to-collect-google-top10-page-info.htm" class="btn btn-warning">查看全文 >></a>
+    </div>
+
+        <div class="page-post-info" >
+        <h2><a href="/javascript-note/javascript-style-modification.htm">在Javascript中获取元素样式</a></h2>
+        <p class="muted"><em>2012-09-29 17:36:34</em></p>
+        <div class="page-post-excerpt">通过Javascript动态的调整元素的样式是能实现很多不错的效果，也是DHTML的基础。不过对刚刚接触Javascript的同学来说，获取元素的style可能是个不小的坑，在看下面的例子：
+<pre lang="javascript">
+var topDiv = document.getElementById("topDiv");
+topDiv.style.top = parseInt(topDiv.style.top) + 100 + "px";
+</pre></div>
+        <a href="/javascript-note/javascript-style-modification.htm" class="btn btn-warning">查看全文 >></a>
+    </div>
+
+        <div class="page-post-info" >
+        <h2><a href="/javascript-note/js-event.htm">小议Javascript事件</a></h2>
+        <p class="muted"><em>2012-09-26 17:33:14</em></p>
+        <div class="page-post-excerpt"><pre>当我按下“a键（注意是小写的字母）时，
+在火狐中会得到
+keydown：keyCode is 65  charCode is 0
+keypress：keyCode is 0   charCode is 97
+keyup：  keyCode is 65  charCode is 0
+在谷歌中会得到
+keydown：keyCode is 65  charCode is 0
+keypress：keyCode is 97  charCode is 97
+keyup：  keyCode is 65  charCode is 0
+在IE中会得到
+keydown：keyCode is 65  charCode is undefined
+keypress：keyCode is 97  charCode is undefined
+keyup：  keyCode is 65  charCode is undefined
+	</pre></div>
+        <a href="/javascript-note/js-event.htm" class="btn btn-warning">查看全文 >></a>
+    </div>
+
+        
+
+    <a href="/sitemap.htm#javascript-note" class="page-more-post">更多内容</a>
+
+</div>
+
+
+<div class="content-recom ">
+    <p>
+        some words here.
+    </p>
+    <div class="well content-recom-list">
+        <ul class="nav nav-list">
+            <li class="nav-header"><i class="icon-folder-open"></i> 分类</li>
+                            <li><a href="/javascript-note/">JAVASCRIPT笔记</a></li>
+                            <li><a href="/css/">CSS</a></li>
+                            <li><a href="/it-news/">IT风云</a></li>
+                            <li><a href="/test/">测试专用目录</a></li>
+                        <li class="nav-header"><i class="icon-file"></i> 推荐日志</li>
+            
+                            <li class="l-style-disc"><a href="/css/inline-and-block.htm">从tab设计看html元素inline和block的区别</a></li>
+                            <li class="l-style-disc"><a href="/test/test1.htm">测试日志1</a></li>
+                            <li class="l-style-disc"><a href="/it-news/csdn-user-password-leakage.htm">CSDN网站600万用户密码泄露！</a></li>
+                            <li class="l-style-disc"><a href="/test/中文名.htm">测试中文文件名</a></li>
+                            <li class="l-style-disc"><a href="/test/testestes.htm">test button</a></li>
+                        <li class="nav-header"><i class="icon-plus-sign"></i> 圈子</li>
+            <li><a href="">前端</a></li>
+        </ul>
+    </div>
+</div>
+<!--/.content-recom -->
+
+    
+</div>
+<!--/.main-content -->
+
+<div class="footer">
+    <div class="footer-seperater"></div>
+    <div class="footer-info clearfix">
+        <p class="span10 ">Copyright © 2012 - Noah Lu - Powered by <a href="http://mockingbird.noahlu.com">Mockingbird</a></p>
+        <div class="footer-info-links">
+        </div>
+    </div>
+</div>
+
+
+
+<div id="tracker" class="hide">
+    <!--51.la -->
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/4164118.js"></script>
+    <noscript><a href="http://www.51.la/?4164118" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4164118.asp" style="border:none" /></a></noscript>
+
+    <!-- ga -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18326235-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</div>
+<script charset="utf-8" src="/assets/js/global.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>星型评分的Javascript代码 - 前端网事</title>
+<link rel="stylesheet" charset="utf-8" href="/assets/lib/google-code-prettify/prettify.css" />
+<link rel="stylesheet" charset="utf-8" href="/assets/lib/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" charset="utf-8" href="/assets/css/global.css" />
+<script charset="utf-8" src="/assets/lib/seajs/sea.js"></script>
+<script type="text/javascript">
+seajs.config({
+    alias : {
+        'jquery': '/assets/lib/jquery/1.8.1/jquery.min.js',       
+        'bootstrap': '/assets/lib/bootstrap/js/bootstrap.min.js',       
+        'prettify': '/assets/lib/google-code-prettify/prettify.js',       
+    },
+    preload: 'jquery',
+    //debug: true,
+    charset: 'utf-8'
+});
+seajs.modify('jquery', function(require, exports) {
+  window.jQuery = window.$ = exports
+});
+seajs.modify('bootstrap', function(require, exports, module) {
+  module.exports = $.bootstrap;
+});
+seajs.modify('prettify', function(require, exports, module) {
+  module.exports = $.prettify;
+});
+</script>
+</head>
+<body class="main">
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">前端网事</a>
+            <div class="pull-left navbar-text" >春天把代码种下去，秋天收获好多好多用户</div>
+                        <div class="nav-collapse collapse pull-right">
+                <ul class="nav">
+                    <li><a href="http://www.noahlu.com/about.htm">About</a></li>
+                    <li><a href="http://www.noahlu.com/portfolio.htm">Portfolio</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    <!--/.contsiner -->
+    </div>
+</div>
+<!--/.navbar -->
+
+<div class="main-content clearfix">
+
+    <div class="content-post span9">
+        <div class="page-header post-head">
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a> <span class="divider">/</span></li>
+                                <li><a href="/javascript-note/">JAVASCRIPT笔记</a> <span class="divider">/</span></li>
+                            </ul>
+            <h1>星型评分的Javascript代码</h1>
+            <p class="post-head-date">2012-09-30 11:10:42 <a href="#comments">评论</a></p>
+                    </div>
+        
+        <div class="post-body">
+            <a href="http://www.noahlu.com/blog/wp-content/uploads/2011/07/star-rating.bmp"><img src="http://www.noahlu.com/blog/wp-content/uploads/2011/07/star-rating.bmp" alt="Javascript评分代码" title="Javascript评分代码" class="alignright size-full wp-image-594" /></a>周末没事，写了几段代码，先分享这个小小的评分工具，实际上它在豆瓣和新浪上都很常见，用户体验也不错。先报两个缺点：1）这个小工具暂时没加与服务器后端的交互，只有纯粹的前端效果；2）没考虑名字空间。然后优点是：1）兼容性良好，至少我测过的firefox，chrome，IE6-8没问题；2）短小易用性能好。源代码如下，预览效果点<a href="http://www.noahlu.com/blog/wp-content/uploads/2011/07/star.htm" target="_blank" rel="no-follow">这里</a>：
+<pre lang="html" line="1">
+
+&lt;style type="text/css"&gt;
+ #comment{height:15px;font-size:12px; line-height:15px;}
+ #n-star{width:79px; height:15px;background:url(http://www.noahlu.com/blog/wp-content/uploads/2011/07/star.gif) no-repeat 0 0; }
+ #star{width:0px; height:15px;background:url(http://www.noahlu.com/blog/wp-content/uploads/2011/07/star.gif) no-repeat 0 -15px; font-size:0;overflow:hidden;}
+ &lt;/style&gt;
+
+
+&lt;div id="comment"&gt;
+ 
+&lt;/div&gt;
+
+
+&lt;div id="n-star"&gt;
+ 
+ &lt;div id="star"&gt;
+ 
+ &lt;/div&gt;
+
+
+&lt;/div&gt;
+
+
+&lt;script type="text/javascript"&gt;
+ var starOver = document.getElementById("star"),starUnder = document.getElementById("n-star"),comment = document.getElementById("comment");
+ var orgWidth = 0,orgWord = "";
+ var nLeft = starUnder.offsetLeft;
+ var word = ["很差","不好","一般","不错","很好"], position = [16,32,48,64,80],starChange = function(e){
+ starUnder.style.cursor = "pointer";
+ var e = e || window.event;
+ if(e.stopPropagation){
+ e.stopPropagation();
+ }
+ else if(e.cancelBubble){
+ e.cancelBubble();
+ }
+ var left = e.clientX;
+ var i = Math.floor((left - nLeft)/16);
+ //comment.innerHTML += "i=" + i + "left = " + left + "; nLeft = " + nLeft + "
+";
+ comment.innerHTML = word[i];
+ try{
+ starOver.style.width = position[i] + "px";
+ }
+ catch(e){};
+ 
+ }
+ 
+ var starClick = function(e){
+ var e = e || window.event;
+ var left = e.clientX;
+ var i = Math.floor((left - nLeft)/16);
+ orgWidth = position[i] + "px";
+ orgWord = word[i];
+ }
+ 
+ var starOut = function(e){
+ starOver.style.width = orgWidth;
+ comment.innerHTML = orgWord;
+ }
+
+
+ if(window.addEventListener){
+ starUnder.addEventListener("mouseover",starChange,false);
+ starOver.addEventListener("mousemove",starChange,false);
+ starOver.addEventListener("click",starClick,false);
+ starUnder.addEventListener("mouseout",starOut,false);
+ } 
+ else if(window.attachEvent){
+ starUnder.attachEvent("onmouseover",starChange);
+ starOver.attachEvent("onmousemove",starChange);
+ starOver.attachEvent("onclick",starClick);
+ starUnder.attachEvent("onmouseout",starOut);
+ }
+ else {
+ starUnder.onmouseover = starChange;
+ starOver.onmousemove = starChange;
+ starOver.onclick = starClick;
+ starUnder.onmouseout = starOut;
+ }
+ &lt;/script&gt; <span style="font-family:'Helvetica Neue, Helvetica, Arial, sans-serif';"><span style="font-size:14px;white-space:nowrap;"> </span></span></pre>        </div>
+        <!--/.post-body -->
+    </div>
+    <!--/.content-post -->
+
+    
+<div class="content-recom ">
+    <p>
+        some words here.
+    </p>
+    <div class="well content-recom-list">
+        <ul class="nav nav-list">
+            <li class="nav-header"><i class="icon-folder-open"></i> 分类</li>
+                            <li><a href="/javascript-note/">JAVASCRIPT笔记</a></li>
+                            <li><a href="/css/">CSS</a></li>
+                            <li><a href="/it-news/">IT风云</a></li>
+                            <li><a href="/test/">测试专用目录</a></li>
+                        <li class="nav-header"><i class="icon-file"></i> 推荐日志</li>
+            
+                            <li class="l-style-disc"><a href="/javascript-note/js-event.htm">小议Javascript事件</a></li>
+                            <li class="l-style-disc"><a href="/javascript-note/javascript-style-modification.htm">在Javascript中获取元素样式</a></li>
+                            <li class="l-style-disc"><a href="/javascript-note/script-to-collect-google-top10-page-info.htm">写了一个统计Google搜索前十名页面信息的脚本</a></li>
+                            <li class="l-style-disc"><a href="/css/inline-and-block.htm">从tab设计看html元素inline和block的区别</a></li>
+                            <li class="l-style-disc"><a href="/test/test1.htm">测试日志1</a></li>
+                            <li class="l-style-disc"><a href="/it-news/csdn-user-password-leakage.htm">CSDN网站600万用户密码泄露！</a></li>
+                            <li class="l-style-disc"><a href="/test/中文名.htm">测试中文文件名</a></li>
+                        <li class="nav-header"><i class="icon-plus-sign"></i> 圈子</li>
+            <li><a href="">前端</a></li>
+        </ul>
+    </div>
+</div>
+<!--/.content-recom -->
+
+    <div class="content-comments span9">
+        <a name="comments"></a>
+        <div id="disqus_thread" class="comments-disqus"></div>
+        <!-- disqus script-->
+        <script type="text/javascript">
+            var disqus_shortname = 'noahuasblog';
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+    </div>
+    <!--/.content-comments -->
+
+    
+</div>
+<!--/.main-content -->
+
+<div class="footer">
+    <div class="footer-seperater"></div>
+    <div class="footer-info clearfix">
+        <p class="span10 ">Copyright © 2012 - Noah Lu - Powered by <a href="http://mockingbird.noahlu.com">Mockingbird</a></p>
+        <div class="footer-info-links">
+        </div>
+    </div>
+</div>
+
+
+
+<div id="tracker" class="hide">
+    <!--51.la -->
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/4164118.js"></script>
+    <noscript><a href="http://www.51.la/?4164118" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4164118.asp" style="border:none" /></a></noscript>
+
+    <!-- ga -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18326235-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</div>
+<script charset="utf-8" src="/assets/js/global.js"></script>
+
+</body>
+</html>

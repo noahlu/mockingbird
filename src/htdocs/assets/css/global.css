@@ -1,0 +1,68 @@
+.main{background:#F6F4DF;}
+.main-content{width:990px;margin:20px auto 40px;}
+.content-post{background:#fff;padding: 10px 20px 30px;border: 1px solid #DDD;overflow: hidden;}
+.content-post ul,
+.content-post ol{margin:20px 0 10px 35px;}
+.content-post li{line-height:25px;}
+.content-post p {margin:0 0 20px;line-height:1.5em;}
+.page-header .breadcrumb{background:none;margin: 0;padding: 0 10px;}
+.post-head-date{color:#616161;display:inline;background:#F3F3F3;font-style:italic;padding:1px 4px}
+.post-head-date a{color:#616161;}
+.post-body{font-size:16px;}
+
+.content-recom{float:right;width:210px;}
+.content-recom-list{width:180px;}
+
+.content-comments{clear:both;background:#fff;padding: 10px 20px;border: 1px solid #DDD;margin-top: 10px;}
+
+.footer{width: 100%;padding-top:167px;background:#FFEF9B url('/assets/images/harvest.jpg') repeat-x 0 0;}
+.footer-seperater{background-color:#FFEF32;height:10px;}
+.footer-info{margin:0 auto; width:990px;padding:20px 0;}
+.footer-info-links{}
+
+/* common styles*/
+.l-style-disc{list-style:disc;}
+.mg-btm-20{margin-bottom:20px;}
+
+/* quote style on <blockquote>, different from default bootstrap style*/
+.quote{background:#fff url('/assets/images/q_left.png') 1% 15% no-repeat;color:#414141;margin:10px 0 30px;border-top:1px solid #DFDFDF;border-bottom:1px solid #DFDFDF;font-style:italic;border-left:0;margin-bottom:10px;padding:0;}
+.quote p{background:transparent url('/assets/images/q_right.png') 99% 85% no-repeat;padding:10px 40px;}
+
+
+/* bootstrap style overwrite */
+.navbar .brand{color:#fff;}
+.navbar .nav > li > a,
+.navbar .nav > li > a:hover{text-decoration:underline;}
+.nav-header{font-size:15px;}
+h1,h2{margin-bottom:20px;}
+h3{margin-top:20px;}
+
+/* page style*/
+.page-more-post{display: block; margin-top:20px; width:100%;border:1px solid #FEE646;text-align: center;padding: 7px 0;background: #FFF096;}
+.page-more-post:hover{background: #FEE646;text-decoration:none;}
+.page-post-info{padding-bottom:20px;}
+.page-post-excerpt{padding-bottom:10px;}
+
+/* overwrite prettify styles*/
+.prettyprint {padding: 8px;border:none;}
+.prettyprint.linenums {
+-webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+-moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {margin: 0 0 0 33px; /* IE indents via margin-left */} 
+ol.linenums li {padding-left: 12px;color: #bebec5;line-height: 18px;text-shadow: 0 1px 0 #fff;}
+li.L0,
+li.L2,
+li.L4,
+li.L6,
+li.L8 { background:#F7F7F9; }
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 { background: #eee }
+
